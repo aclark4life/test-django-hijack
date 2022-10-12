@@ -45,6 +45,9 @@ urlpatterns = urlpatterns + [
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]
 
+urlpatterns = urlpatterns + [
+    path("accounts/", include("allauth.urls")),
+]
 
 urlpatterns = urlpatterns + [
     path("hijack/", include("hijack.urls")),
