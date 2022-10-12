@@ -47,7 +47,7 @@ urlpatterns = urlpatterns + [
 
 
 urlpatterns = urlpatterns + [
-    path('hijack/', include('hijack.urls')),
+    path("hijack/", include("hijack.urls")),
 ]
 
 urlpatterns = urlpatterns + [
