@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "hijack",
     "allauth",
     "allauth.account",
+    "allauth.socialaccount",
 ]
 
 MIDDLEWARE = [
