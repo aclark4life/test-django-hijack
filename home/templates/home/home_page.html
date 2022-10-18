@@ -3,6 +3,7 @@
 {% block body_class %}template-homepage{% endblock %}
 {% block extra_css %}
   {% stylesheet_pack 'app' %}
+  <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
 {% endblock extra_css %}
 {% block content %}
 {% load webpack_loader static %}

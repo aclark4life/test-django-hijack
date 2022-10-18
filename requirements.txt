@@ -14,7 +14,7 @@ defusedxml==0.7.1
 Django==4.1.2
 django-allauth==0.51.0
 django-filter==22.1
-django-hijack==3.2.1
+django-hijack==2.3.0
 django-modelcluster==6.0
 django-permissionedforms==0.1
 djangorestframework==3.14.0

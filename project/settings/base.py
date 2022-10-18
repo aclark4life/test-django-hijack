@@ -60,7 +60,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    "hijack.middleware.HijackUserMiddleware",
+    # "hijack.middleware.HijackUserMiddleware",
 ]
 
 ROOT_URLCONF = "project.urls"
