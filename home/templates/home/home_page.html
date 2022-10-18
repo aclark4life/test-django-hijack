@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% load webpack_loader static %}
+{% load hijack_tags %}
 {% block body_class %}template-homepage{% endblock %}
 {% block extra_css %}
   {% stylesheet_pack 'app' %}
   <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
 {% endblock extra_css %}
 {% block content %}
+{% hijack_notification %}
 {% load webpack_loader static %}
 <div class="jumbotron py-5">
   <div class="container">
