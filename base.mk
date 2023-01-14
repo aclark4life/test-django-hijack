@@ -9,7 +9,7 @@
 # License
 # ------------------------------------------------------------------------------ 
 #
-# Copyright 2016—2022 Jeffrey A. Clark, "Alex"
+# Copyright 2016—2023 Jeffrey A. Clark (Alex)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -387,13 +387,16 @@ django-urls-default:
 django-npm-install-default:
 	cd frontend; npm install
 
+django-open-default:
+	open http://0.0.0.0:8000
+
 #
 # Git
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 #
 
 gitignore-default:
-	echo "bin/\nlib/\nlib64\nshare/\npyvenv.cfg\n__pycache__" > .gitignore
+	echo "bin/\nlib/\nlib64\nshare/\npyvenv.cfg\n__pycache__\n.elasticbeanstalk/" > .gitignore
 	git add .gitignore
 	git commit -a -m "Add .gitignore"
 	git push
@@ -420,6 +423,14 @@ git-push-default:
 
 git-set-upstream-default:
 	git push --set-upstream origin main
+
+#
+# iOS
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+#
+
+xcodegen:
+	xcodegen -p $(PROJECT)
 
 #
 # Misc
@@ -606,7 +617,7 @@ wagtail-init-default: db-init wagtail-install
 	@echo "$$HOME_PAGE" > home/templates/home/home_page.html
 	python manage.py webpack_init --skip-checks
 	-git add frontend
-	-@$(MAKE) cp
+	-git commit -a -m "Add frontend"
 	@$(MAKE) django-npm-install
 	-@$(MAKE) cp
 	@$(MAKE) isort
@@ -649,6 +660,9 @@ readme: readme-init
 .PHONY: serve
 serve: django-serve
 
+.PHONY: s
+s: serve
+
 .PHONY: static
 static: django-static
 
@@ -676,10 +690,13 @@ edit: readme-edit
 e: edit
 
 .PHONY: open
-open: readme-open
+open: django-open
 
 .PHONY: o
 o: open
+
+.PHONY: pdf
+pdf: readme-build
 
 # git --------------------------------------------------------------------------------
 
